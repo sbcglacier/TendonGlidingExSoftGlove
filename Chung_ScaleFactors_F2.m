@@ -14,6 +14,8 @@
 % PIP = proximal interphalangeal joint
 % DIP = distal interphalangeal joint
 
+% In OpenSim 1-breadth(x-axis)  2-length(y-axis)  3-depth(z-axis)
+
 %% Import data from .txt files containing finger bone mesh data from OpenSim
 % Change the directory "C:\Users\18507522\Downloads\FingerMeshData" to the folder containing the F2_MC.txt file
 %-------------------------------------------------------------------------------
@@ -63,9 +65,9 @@ clear opts
 
 %% 
 % Variable to select the parameters in the CCD design
-Ds= 0%-0.7071
-Ls= 0%-0.7071
-Bs= 0%-0.7071
+Ds= 0.7071%-0.7071
+Ls= 0.7071%-0.7071
+Bs= -0.7071%-0.7071
 
 % Variables rotate the bone about joints. The goal is to align the joint centers to be in a line.
 angscalar_cmc = 0;
@@ -394,24 +396,36 @@ s_totz = 0;
 
 for i = 1:marker_cnt
 if V_MC(1,i) ~= 0
+if E_MC(1,i)/V_MC(1,i) <3
+if E_MC(1,i)/V_MC(1,i) >0
 s_totx = s_totx + E_MC(1,i)/V_MC(1,i);
 marker_cnt_x = marker_cnt_x +1;
 end
+end
+end
 
 if V_MC(2,i) ~= 0 
+if E_MC(2,i)/V_MC(2,i) <3
+if E_MC(2,i)/V_MC(2,i) >0
 s_toty = s_toty + E_MC(2,i)/V_MC(2,i);
 marker_cnt_y = marker_cnt_y +1;
 end
+end
+end
 
 if V_MC(3,i) ~= 0
+if E_MC(3,i)/V_MC(3,i) <3
+if E_MC(3,i)/V_MC(3,i) >0
 s_totz = s_totz + E_MC(3,i)/V_MC(3,i);
 marker_cnt_z = marker_cnt_z +1;
 end
 end
+end
+end
 
-s_totx = s_totx/marker_cnt;
-s_toty = s_toty/marker_cnt;
-s_totz = s_totz/marker_cnt;
+s_totx = s_totx/marker_cnt_x;
+s_toty = s_toty/marker_cnt_y;
+s_totz = s_totz/marker_cnt_z;
 Scale_MC = [s_totx; s_toty; s_totz]
 
 % ~~~~~~~~~~~~~~~~~~~ PP SCALE FACTOR ~~~~~~~~~~~~~~~
@@ -445,24 +459,37 @@ s_totz = 0;
 
 for i = 1:marker_cnt
 if V_PP(1,i) ~= 0
+if E_PP(1,i)/V_PP(1,i) <3
+if E_PP(1,i)/V_PP(1,i) >0
 s_totx = s_totx + E_PP(1,i)/V_PP(1,i);
 marker_cnt_x = marker_cnt_x +1;
 end
+end
+end
+
 
 if V_PP(2,i) ~= 0 
+if E_PP(2,i)/V_PP(2,i) <3
+if E_PP(2,i)/V_PP(2,i) >0
 s_toty = s_toty + E_PP(2,i)/V_PP(2,i);
 marker_cnt_y = marker_cnt_y +1;
 end
+end
+end
 
 if V_PP(3,i) ~= 0
+if E_PP(3,i)/V_PP(3,i) <3
+if E_PP(3,i)/V_PP(3,i) >0
 s_totz = s_totz + E_PP(3,i)/V_PP(3,i);
 marker_cnt_z = marker_cnt_z +1;
 end
 end
+end
+end
 
-s_totx = s_totx/marker_cnt;
-s_toty = s_toty/marker_cnt;
-s_totz = s_totz/marker_cnt;
+s_totx = s_totx/marker_cnt_x;
+s_toty = s_toty/marker_cnt_y;
+s_totz = s_totz/marker_cnt_z;
 Scale_PP = [s_totx; s_toty; s_totz]
 
 %Parent reference
@@ -517,27 +544,43 @@ marker_cnt = length(V_MP(1,:));
 s_totx = 0;
 s_toty = 0;
 s_totz = 0;
+marker_cnt_x = 0;
+marker_cnt_y = 0;
+marker_cnt_z = 0;
 
 for i = 1:marker_cnt
 if V_MP(1,i) ~= 0
+if E_MP(1,i)/V_MP(1,i) <3
+if E_MP(1,i)/V_MP(1,i) >0
 s_totx = s_totx + E_MP(1,i)/V_MP(1,i);
 marker_cnt_x = marker_cnt_x +1;
 end
+end
+end
 
 if V_MP(2,i) ~= 0 
+if E_MP(2,i)/V_MP(2,i) <3
+if E_MP(2,i)/V_MP(2,i) >0
 s_toty = s_toty + E_MP(2,i)/V_MP(2,i);
 marker_cnt_y = marker_cnt_y +1;
 end
+end
+end
 
 if V_MP(3,i) ~= 0
+if E_MP(3,i)/V_MP(3,i) <3
+if E_MP(3,i)/V_MP(3,i) >0
 s_totz = s_totz + E_MP(3,i)/V_MP(3,i);
 marker_cnt_z = marker_cnt_z +1;
 end
 end
+end
+end
 
-s_totx = s_totx/marker_cnt;
-s_toty = s_toty/marker_cnt;
-s_totz = s_totz/marker_cnt;
+s_totx = s_totx/marker_cnt_x;
+s_toty = s_toty/marker_cnt_y;
+s_totz = s_totz/marker_cnt_z;
+
 % Scale_MP contains the MP scale factors
 fprintf('\nScale value for MP:\n')
 Scale_MP = [s_totx; s_toty; s_totz]
@@ -594,25 +637,41 @@ marker_cnt = length(V_DP(1,:));
 s_totx = 0;
 s_toty = 0;
 s_totz = 0;
+marker_cnt_x = 0;
+marker_cnt_y = 0;
+marker_cnt_z = 0;
+
 for i = 1:marker_cnt
 if V_DP(1,i) ~= 0
+if E_DP(1,i)/V_DP(1,i) <3
+if E_DP(1,i)/V_DP(1,i) >0
 s_totx = s_totx + E_DP(1,i)/V_DP(1,i);
 marker_cnt_x = marker_cnt_x +1;
 end
+end
+end
 
 if V_DP(2,i) ~= 0 
+if E_DP(2,i)/V_DP(2,i) <3
+if E_DP(2,i)/V_DP(2,i) >0
 s_toty = s_toty + E_DP(2,i)/V_DP(2,i);
 marker_cnt_y = marker_cnt_y +1;
 end
+end
+end
 
 if V_DP(3,i) ~= 0
+if E_DP(3,i)/V_DP(3,i) <3
+if E_DP(3,i)/V_DP(3,i) >0
 s_totz = s_totz + E_DP(3,i)/V_DP(3,i);
 marker_cnt_z = marker_cnt_z +1;
 end
 end
-s_totx = s_totx/marker_cnt
-s_toty = s_toty/marker_cnt
-s_totz = s_totz/marker_cnt
+end
+end
+s_totx = s_totx/marker_cnt_x
+s_toty = s_toty/marker_cnt_y
+s_totz = s_totz/marker_cnt_z
 % Scale_DP presents the DP scale factors
 Scale_DP = [s_totx; s_toty; s_totz]
 
