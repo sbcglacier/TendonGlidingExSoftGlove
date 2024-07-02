@@ -1,0 +1,75 @@
+31 
+The following section was used to calculated the lengths of maximum lengths of actuator along the length direction. As well as the minimum lengths
+
+The number of actuator chambers are as follows
+L_CMC = 11; L_MCP = 7; L_PIP = 5; L_DIP = 8.
+
+L2DP_dv	24.5	2.18
+L3DP_dv	26.5	2.47	DP extension is 0.02163 m which is increasing length by 81.6%
+L4DP_dv	26.4	2.19			
+L5DP_dv	23.2	2.38
+
+L2MP_dv	25.6	2.60
+L3MP_dv	30.6	2.74
+L4MP_dv	28.4	2.79
+L5MP_dv	19.7	2.53
+	
+L2PP_dv	45.3*	3.96	
+L3PP_dv	50.6	3.79
+L4PP_dv	45.8	3.68	
+L5PP_dv	36.1	3.44
+	
+L2MC_dv	80.9	7.12
+L3MC_dv	76.8*	6.69    original length of MC was lengthened to be 0.113257 m	which is mult by 1.4747 (full length); the L_MCP of the actuator (7 chams) bottom length was 0.02862 m making 25.27% of the length
+L4MC_dv	72.0	6.52
+L5MC_dv	66.5	6.57	
+
+min
+L5DP_dv	23.2	2.38
+L5MP_dv	19.7	2.53
+L5PP_dv	36.1	3.44
+L5MC_dv	66.5	6.57
+
+max 
+L3DP_dv	26.5	2.47
+L3MP_dv	30.6	2.74
+L3PP_dv	50.6	3.79
+L2MC_dv	80.9	7.12
+
+calculations for actuator lengths needed min max
+
+Minimum values which need to be calculated (full actuator segment  lengths)
+L_DIP_min = (23.2-2.38*2)*1.816 + (19.7-2.53*2)/2  = 40.81 mm
+L_PIP_min = (19.7-2.53*2)/2 + (36.1-3.44*2)/2  =  21.93 mm
+L_MCP_min = (36.1-3.44*2)/2 + (66.5-6.57*2)*1.4747*0.2527  =  34.49 mm
+L_CMC_min = (66.5-6.57*2)*1.4747*(1-0.2527)  =  58.81 mm
+
+
+maximum values which need to be calculated (full actuator segment lengths)
+L_DIP_max = (26.5+2.47*2)*1.816 + (30.6+2.74*2)/2   =     75.14 mm
+L_PIP_max = (30.6+2.74*2)/2 + (50.6+3.79*2)/2  =  47.13 mm
+L_MCP_max = (50.6+3.79*2)/2 + (80.9+7.12*2)*1.4747*0.2527  =  64.54 mm
+L_CMC_max = (80.9+7.12*2)*1.4747*(1-0.2527)  =    104.85 mm
+
+Now to calculate individual breadth values:
+
+Minimum:
+8*( x + 1 mm) - 1mm =  L_DIP_min
+5*(x+1mm) = L_PIP_min
+7*(x+1mm) = L_MCP_min
+11*(x+1mm) = L_CMC_min
+
+L_DIP_min_chamber =  (L_DIP_min+ 1mm)/8 - 1mm   = 4.23 mm
+L_PIP_min_chamber = (L_PIP_min)/5 - 1mm = 3.386 mm
+L_MCP_min_chamber = 3.927 mm
+L_CMC_min_chamber = 4.346 mm
+
+L_DIP_max_chamber = 8.5175 mm
+L_PIP_max_chamber = 8.426 mm
+L_MCP_max_chamber = 8.22 mm
+L_CMC_max_chamber = 8.53 mm
+
+
+
+
+ 
