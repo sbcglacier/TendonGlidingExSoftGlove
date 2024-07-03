@@ -8,4 +8,8 @@ The folder OpenSim_FingerMeshData contains the mesh files needed for the matlab 
 
 The file Apex_mesh_create_3Chambers.py is used to create the actuator in Apex.
 The file Marc_setup_3Chambers.py is used to setup the chambers after the Apex mesh files have been created.
+
 The SensitivityAnalysis.ipynb calculates the moments and bending angles from data gathered from Marc/Mentat.
+Steps: Run the Marc_setup_3Chambers.py, obtain the ThreeActuator.proc file and run it. Sweep the nodes at the strain limiting layer; add the RBE elements; Correct pressure; select the 6 nodes for displacement then generate the Dx, Dz, and displacement report. 
+Constrain the one side of the actuator for the reaction moments generate the Rx Rz plots and also the displacement moment report.
+With the files created run the SensitivityAnalysis.ipynb file to calculate the respective moments and bending angle.
