@@ -13,3 +13,5 @@ The SensitivityAnalysis.ipynb calculates the moments and bending angles from dat
 Steps: Run the Marc_setup_3Chambers.py, obtain the ThreeActuator.proc file and run it. Sweep the nodes at the strain limiting layer; add the RBE elements; Correct pressure; select the 6 nodes for displacement then generate the Dx, Dz, and displacement report. 
 Constrain the one side of the actuator for the reaction moments generate the Rx Rz plots and also the displacement moment report.
 With the files created run the SensitivityAnalysis.ipynb file to calculate the respective moments and bending angle.
+
+The BiPNA_cascadePlot.py uses affine transforms to cascade three actuators with varied parameters.
