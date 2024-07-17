@@ -16,3 +16,4 @@ With the files created run the SensitivityAnalysis.ipynb file to calculate the r
 
 The BiPNA_cascadePlot.py uses affine transforms to cascade three actuators with varied parameters.
 GenerateApex3ChamberMesh.py was used to create the mesh in Apex for the three chambers with altered width and length.
+Marc_3ChamberSetupAutomation.py is used to setup the mesh in Marc after generating it in Apex.
