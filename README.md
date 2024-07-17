@@ -15,3 +15,4 @@ Constrain the one side of the actuator for the reaction moments generate the Rx 
 With the files created run the SensitivityAnalysis.ipynb file to calculate the respective moments and bending angle.
 
 The BiPNA_cascadePlot.py uses affine transforms to cascade three actuators with varied parameters.
+GenerateApex3ChamberMesh.py was used to create the mesh in Apex for the three chambers with altered width and length.
