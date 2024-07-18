@@ -2227,6 +2227,21 @@ for a in range(iter_count):
     )
     print('x:',x_col[a])
     print('ot:',L0+2*ac_th_for+ch_width_1)
+	
+    _target = apex.EntityCollection()
+    part_1 = apex.getPart( pathName = model_1.name+"/Part 1" )
+    surf_1 = part_1.getSurface( name = surf_name )
+    _target.append( surf_1 )
+    _splitter = apex.EntityCollection()
+    part_1 = apex.getPart( pathName = model_1.name+"/Part 1")
+    solid_1 = part_1.getSolid( name = sol_name )
+    _splitter.extend( solid_1.getFaces( ids = str(int(id_col[a])) ) )
+    result = apex.geometry.splitEntityWithOffsetFaces(
+        target = _target,
+        splitter = _splitter,
+        offset = -5.000000000000000e-04,
+        splitBehavior = apex.geometry.GeometrySplitBehavior.Partition
+    )
 
     # gaps split in x direction
 part_1 = model_1.getCurrentPart()
